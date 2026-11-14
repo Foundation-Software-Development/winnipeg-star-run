@@ -1,0 +1,21 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Star Run Winnipeg//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:star-run-2026@winnipeg-star-run
+DTSTAMP:20261114T000000Z
+DTSTART:20261226T150000Z
+DTEND:20261226T170000Z
+SUMMARY:Christmas Star Run / Забіг Звіздарів
+LOCATION:The Forks, Winnipeg
+DESCRIPTION:5 km run or 2 km walk. Registration by donation to the Prytula Foundation: https://prytulafoundation.org/en/donation. Bring your stars!
+URL:https://winnipeg-star-run.vercel.app/
+BEGIN:VALARM
+TRIGGER:-PT2H
+ACTION:DISPLAY
+DESCRIPTION:Star Run starts at 9:00 AM
+END:VALARM
+END:VEVENT
+END:VCALENDAR

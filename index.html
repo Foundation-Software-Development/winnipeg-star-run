@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Christmas Star Run · Забіг Звіздарів — Dec 26, The Forks, Winnipeg</title>
+<meta name="description" content="A festive Ukrainian Christmas run in Winnipeg: 5 km run or 2 km walk, live carols, kutia and a raffle. Registration by donation to the Prytula Foundation.">
+<meta name="theme-color" content="#0c0f1d">
+
+<!-- Social previews (Instagram, Messenger, WhatsApp). Update the domain if the Vercel URL changes. -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://winnipeg-star-run.vercel.app/">
+<meta property="og:title" content="Christmas Star Run · Забіг Звіздарів">
+<meta property="og:description" content="Dec 26 · 9:00 AM · The Forks, Winnipeg. 5 km run or 2 km walk. Registration by donation.">
+<meta property="og:image" content="https://winnipeg-star-run.vercel.app/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800;900&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --ink:#0c0f1d; --ink-2:#161a2e; --paper:#fbfaf5; --yellow:#f3ec35; --yellow-2:#ffe14d;
+    --red:#e23b2e; --blue:#2f5bd8; --muted:#5d6176; --line:rgba(12,15,29,.12);
+    --display:"Inter Tight",system-ui,sans-serif; --body:"Jost",system-ui,sans-serif;
+    --r:22px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{font-family:var(--body);background:var(--ink);color:var(--ink);line-height:1.55;font-size:18px}
+  img,video{display:block;max-width:100%}
+  a{color:inherit}
+  html[data-lang="en"] [data-l="uk"], html[data-lang="uk"] [data-l="en"]{display:none !important}
+
+  .wrap{width:min(1120px,100% - 40px);margin-inline:auto}
+
+  /* ---------- header ---------- */
+  header{position:fixed;inset:0 0 auto;z-index:20;padding:14px 0;transition:background .3s, backdrop-filter .3s}
+  header.solid{background:rgba(12,15,29,.82);backdrop-filter:blur(10px)}
+  .bar{display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .brand{display:flex;align-items:center;gap:8px;color:#fff;text-decoration:none;font-family:var(--display);font-weight:800;letter-spacing:-.02em;font-size:17px}
+  .brand svg{width:22px;height:22px}
+  .lang{display:flex;background:rgba(255,255,255,.12);border-radius:99px;padding:3px}
+  .lang button{border:0;background:none;color:#fff;font:600 14px var(--body);padding:6px 12px;border-radius:99px;cursor:pointer}
+  .lang button[aria-pressed="true"]{background:var(--yellow);color:var(--ink)}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;min-height:100svh;color:#fff;display:flex;align-items:flex-end;overflow:hidden;isolation:isolate}
+  .hero-media{position:absolute;inset:0;z-index:-2}
+  .hero-media video{width:100%;height:100%;object-fit:cover}
+  .hero::before{content:"";position:absolute;inset:0;z-index:-1;
+    background:linear-gradient(180deg,rgba(12,15,29,.55) 0%,rgba(12,15,29,.15) 30%,rgba(12,15,29,.7) 62%,var(--ink) 100%)}
+  .hero-inner{padding:110px 0 42px;position:relative;z-index:2}
+  .kicker{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:15px;letter-spacing:.06em;text-transform:uppercase;
+    background:rgba(255,255,255,.14);backdrop-filter:blur(6px);padding:7px 14px;border-radius:99px;margin-bottom:18px}
+  .kicker .dot{width:8px;height:8px;border-radius:50%;background:var(--yellow);box-shadow:0 0 0 4px rgba(243,236,53,.25)}
+  .title{position:relative;display:inline-block;font-family:var(--display);font-weight:900;color:var(--yellow);
+    text-transform:uppercase;line-height:.86;letter-spacing:-.045em;font-size:clamp(56px,15.5vw,148px);padding:.12em .1em}
+  .title .orbit{position:absolute;inset:-6% -5%;width:110%;height:112%;pointer-events:none;overflow:visible}
+  .when{font-family:var(--display);font-weight:800;font-size:clamp(20px,4.6vw,30px);letter-spacing:-.01em;margin:18px 0 6px}
+  .when span{color:var(--yellow)}
+  .where{opacity:.88;font-size:17px}
+  .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;font:600 18px var(--body);
+    padding:16px 26px;border-radius:99px;border:2px solid transparent;transition:transform .15s, background .2s;cursor:pointer}
+  .btn:active{transform:scale(.97)}
+  .btn-primary{background:var(--yellow);color:var(--ink)}
+  .btn-primary:hover{background:var(--yellow-2)}
+  .btn-ghost{border-color:rgba(255,255,255,.45);color:#fff}
+  .btn-ghost:hover{background:rgba(255,255,255,.1)}
+  .btn svg{width:20px;height:20px}
+  .countdown{margin-top:22px;font-size:15px;opacity:.8}
+  .countdown b{color:var(--yellow);font-weight:600}
+
+  @media (min-width:900px){
+    .hero{align-items:center}
+    .hero-media{left:auto;right:max(20px,calc((100% - 1120px)/2));top:50%;bottom:auto;width:340px;height:604px;transform:translateY(-46%) rotate(2.5deg);z-index:1;
+      border-radius:28px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.5);outline:6px solid rgba(255,255,255,.08)}
+    .hero::before{background:radial-gradient(1200px 600px at 20% 30%,#1c2245 0%,var(--ink) 70%)}
+    .hero-inner{padding:120px 0 80px}
+    .hero-text{max-width:640px}
+    .title{font-size:clamp(80px,9vw,128px)}
+  }
+
+  /* ---------- sections ---------- */
+  .paper{background:var(--paper);border-radius:var(--r) var(--r) 0 0;position:relative}
+  section{padding:72px 0}
+  .eyebrow{font:600 14px var(--body);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+  h2{font-family:var(--display);font-weight:900;letter-spacing:-.035em;line-height:.95;font-size:clamp(36px,7vw,60px);text-transform:uppercase}
+  .lead{font-size:clamp(20px,3vw,24px);line-height:1.45;max-width:760px;margin-top:20px}
+  .quote{font-family:var(--display);font-weight:800;letter-spacing:-.02em;font-size:clamp(24px,4.4vw,38px);line-height:1.15;max-width:860px}
+  .quote .star{color:#d4a800}
+  .center{text-align:center;margin-inline:auto}
+  /* single-line headings: size scales to fit the screen width (--em = heading length in em) */
+  h2.one-line{--fit:var(--em);white-space:nowrap;font-size:min(60px, calc((100vw - 40px) / var(--fit)))}
+  html[data-lang="uk"] h2.one-line{--fit:var(--em-uk, var(--em))}
+
+  .facts{display:grid;gap:14px;margin-top:40px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+  .fact{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:24px}
+  .fact .ico{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:var(--ink);color:var(--yellow);margin-bottom:16px}
+  .fact .ico svg{width:22px;height:22px}
+  .fact h3{font-family:var(--display);font-weight:800;font-size:26px;letter-spacing:-.02em;line-height:1.1}
+  .fact p{color:var(--muted);margin-top:6px}
+  .fact a.small{display:inline-block;margin-top:10px;font-weight:600;color:var(--ink);text-underline-offset:4px}
+
+  /* register */
+  .register{background:var(--ink);color:#fff;border-radius:calc(var(--r) + 6px);padding:clamp(28px,5vw,56px);margin-top:8px;position:relative;overflow:hidden}
+  .register h2{color:var(--yellow)}
+  .register .lead{color:rgba(255,255,255,.85)}
+  .steps{list-style:none;display:grid;gap:14px;margin:34px 0;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));counter-reset:s}
+  .steps li{counter-increment:s;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:20px 20px 20px 66px;position:relative}
+  .steps li::before{content:counter(s);position:absolute;left:18px;top:18px;width:34px;height:34px;border-radius:50%;background:var(--yellow);color:var(--ink);
+    font:800 18px var(--display);display:grid;place-items:center}
+  .tickets{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:30px}
+  .ticket{display:flex;align-items:baseline;gap:8px;background:#fff;color:var(--ink);padding:12px 18px;border-radius:14px;font-weight:600;
+    -webkit-mask:radial-gradient(circle 7px at 0 50%,#0000 98%,#000) left/51% 100% no-repeat, radial-gradient(circle 7px at 100% 50%,#0000 98%,#000) right/51% 100% no-repeat;
+            mask:radial-gradient(circle 7px at 0 50%,#0000 98%,#000) left/51% 100% no-repeat, radial-gradient(circle 7px at 100% 50%,#0000 98%,#000) right/51% 100% no-repeat}
+  .ticket b{font:900 24px var(--display);letter-spacing:-.02em}
+  .ticket-more{background:transparent;color:#fff;border:2px dashed rgba(255,255,255,.4);-webkit-mask:none;mask:none;padding:10px 16px}
+  .fine{font-size:15px;color:rgba(255,255,255,.6);margin-top:16px}
+  .register .bg-star{position:absolute;right:-60px;top:-60px;width:260px;opacity:.08;color:var(--yellow)}
+
+  /* awaits */
+  .awaits{display:grid;gap:14px;margin-top:36px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+  .await{border-radius:var(--r);overflow:hidden;background:#fff;border:1px solid var(--line)}
+  .await img{width:100%;aspect-ratio:4/3;object-fit:cover}
+  .await div{padding:18px 20px 22px}
+  .await h3{font-family:var(--display);font-weight:800;font-size:22px;letter-spacing:-.02em;line-height:1.15}
+  .await p{color:var(--muted);margin-top:4px;font-size:16px}
+
+  /* stars callout */
+  .stars{display:grid;gap:28px;align-items:center}
+  .stars img{border-radius:var(--r);width:100%;aspect-ratio:4/5;object-fit:cover}
+  .stars .badge{display:inline-block;background:var(--yellow);font:800 14px var(--display);letter-spacing:.04em;text-transform:uppercase;padding:6px 12px;border-radius:8px;margin-bottom:16px}
+  @media (min-width:800px){.stars{grid-template-columns:1fr 1.1fr;gap:56px}}
+
+  /* gallery */
+  /* gallery: grid, photos go left-to-right, row by row.
+     Phone: 2 columns, first photo spans the full width (9 photos = 1 + 4 rows of 2).
+     Tablet/desktop: 3 columns (9 photos = 3 rows of 3). */
+  .gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:34px}
+  .gallery button{display:block;width:100%;border:0;padding:0;border-radius:14px;overflow:hidden;cursor:zoom-in;background:#ddd}
+  .gallery img{width:100%;height:100%;aspect-ratio:2/3;object-fit:cover;transition:transform .4s}
+  .gallery button:first-child{grid-column:span 2}
+  .gallery button:first-child img{aspect-ratio:4/3;object-position:center 30%}
+  .gallery button:hover img{transform:scale(1.03)}
+  @media (min-width:700px){
+    .gallery{grid-template-columns:repeat(3,1fr);gap:12px}
+    .gallery button:first-child{grid-column:auto}
+    .gallery img,.gallery button:first-child img{aspect-ratio:4/5;object-position:center}
+  }
+  .group-photo{border-radius:var(--r);overflow:hidden;margin-top:34px}
+  .group-photo img{width:100%}
+  .group-photo figcaption{font-size:15px;color:var(--muted);padding-top:10px}
+
+  dialog{border:0;padding:0;background:transparent;max-width:min(96vw,1100px);max-height:92vh;margin:auto}
+  dialog::backdrop{background:rgba(8,10,20,.92)}
+  dialog img{max-height:88vh;width:auto;border-radius:12px;margin:auto}
+  dialog .close{position:fixed;top:14px;right:14px;width:44px;height:44px;border-radius:50%;border:0;background:#fff;font-size:26px;line-height:1;cursor:pointer}
+
+  /* final */
+  .final{background:var(--ink);color:#fff;text-align:center;padding:90px 0 60px}
+  .final h2{color:var(--yellow);font-size:clamp(40px,9vw,84px)}
+  .final p{opacity:.85;font-size:20px;margin:16px auto 30px;max-width:560px}
+  footer{background:var(--ink);color:rgba(255,255,255,.55);font-size:14px;padding:30px 0 calc(30px + env(safe-area-inset-bottom));text-align:center;border-top:1px solid rgba(255,255,255,.08)}
+  footer a{color:rgba(255,255,255,.8)}
+  footer .credit{margin-top:10px;font-size:13px;opacity:.85}
+
+  /* sticky mobile donate */
+  .sticky{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:15;transform:translateY(140%);transition:transform .35s ease}
+  .sticky.show{transform:none}
+  .sticky .btn{width:100%;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+  @media (min-width:900px){.sticky{display:none}}
+
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease, transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="star8" viewBox="0 0 100 100"><path fill="currentColor" d="M50 0l9.6 26.9L85.4 14.6 73.1 40.4 100 50 73.1 59.6 85.4 85.4 59.6 73.1 50 100 40.4 73.1 14.6 85.4 26.9 59.6 0 50 26.9 40.4 14.6 14.6 40.4 26.9z"/></symbol>
+  <symbol id="heart" viewBox="0 0 24 24"><path fill="currentColor" d="M12 21s-7.5-4.6-10-9.2C.3 8.6 2 4.5 6 4.1c2.2-.2 4.2.9 6 3 1.8-2.1 3.8-3.2 6-3 4 .4 5.7 4.5 4 7.7C19.5 16.4 12 21 12 21z"/></symbol>
+</svg>
+
+<header id="top">
+  <div class="wrap bar">
+    <a class="brand" href="#top">
+      <svg style="color:var(--yellow)"><use href="#star8"/></svg>
+      <span data-l="en">Christmas Star Run</span><span data-l="uk">Забіг Звіздарів</span>
+    </a>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" data-set="en" aria-pressed="true">EN</button>
+      <button type="button" data-set="uk" aria-pressed="false">УКР</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero" style="padding:0">
+    <div class="hero-media">
+      <video src="media/stars.mp4" poster="media/stars-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
+    </div>
+    <div class="wrap hero-inner">
+      <div class="hero-text">
+        <div class="kicker"><span class="dot"></span>
+          <span data-l="en">The Star Run is back!</span><span data-l="uk">Забіг Звіздарів повертається!</span>
+        </div>
+        <h1 class="title">
+          <svg class="orbit" viewBox="0 0 400 200" preserveAspectRatio="none" aria-hidden="true">
+            <ellipse cx="200" cy="100" rx="196" ry="80" fill="none" stroke="#f3ec35" stroke-width="1.6" vector-effect="non-scaling-stroke" transform="rotate(-4 200 100)"/>
+          </svg>
+          <span data-l="en">Christmas<br>Star Run</span><span data-l="uk">Забіг<br>Звіздарів</span>
+        </h1>
+        <p class="when">
+          <span data-l="en">Sat, Dec 26 <span>·</span> 9:00 AM</span>
+          <span data-l="uk">Субота, 26 грудня <span>·</span> 9:00</span>
+        </p>
+        <p class="where">
+          <span data-l="en">The Forks, Winnipeg · 5 km run or 2 km walk</span>
+          <span data-l="uk">The Forks, Вінніпег · 5 км біг або 2 км прогулянка</span>
+        </p>
+        <div class="cta-row">
+          <a class="btn btn-primary donate-link" href="https://prytulafoundation.org/en/donation" target="_blank" rel="noopener">
+            <svg><use href="#heart"/></svg>
+            <span data-l="en">Donate to register</span><span data-l="uk">Задонатити та зареєструватись</span>
+          </a>
+          <a class="btn btn-ghost" href="#details"><span data-l="en">Details</span><span data-l="uk">Деталі</span></a>
+        </div>
+        <p class="countdown" id="countdown" hidden></p>
+      </div>
+    </div>
+  </section>
+
+  <div class="paper">
+    <!-- INTRO + FACTS -->
+    <section id="details">
+      <div class="wrap">
+        <p class="quote reveal center">
+          <span class="star">✦</span>
+          <span data-l="en">The light of our traditions shines bright through any darkness.</span>
+          <span data-l="uk">Світло наших традицій сильніше за будь-яку темряву.</span>
+        </p>
+        <p class="lead reveal center">
+          <span data-l="en">Join us in sharing the joy of Ukrainian Christmas at a festive run: choose a 5 km easy run or a 2 km walk, sing carols, meet friends and make new memories together.</span>
+          <span data-l="uk">Запрошуємо розділити радість українського Різдва на святковому забігу: обирайте 5 км легкої пробіжки або 2 км прогулянки, співайте колядки, зустрічайте друзів і створюйте нові спогади разом.</span>
+        </p>
+
+        <div class="facts">
+          <div class="fact reveal">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg></div>
+            <h3><span data-l="en">Saturday, Dec 26</span><span data-l="uk">Субота, 26 грудня</span></h3>
+            <p><span data-l="en">Start at 9:00 AM</span><span data-l="uk">Старт о 9:00</span></p>
+            <a class="small" href="star-run.ics" download><span data-l="en">Add to calendar →</span><span data-l="uk">Додати в календар →</span></a>
+          </div>
+          <div class="fact reveal">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s7-6.2 7-12a7 7 0 10-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
+            <h3>The Forks, <span data-l="en">Winnipeg</span><span data-l="uk">Вінніпег</span></h3>
+            <p><span data-l="en">Meet inside, by the main elevator</span><span data-l="uk">Збір всередині, біля головного ліфта</span></p>
+            <a class="small" href="https://www.google.com/maps/search/?api=1&query=The+Forks+Market+Winnipeg" target="_blank" rel="noopener"><span data-l="en">Open in Maps →</span><span data-l="uk">Відкрити на мапі →</span></a>
+          </div>
+          <div class="fact reveal">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="13" cy="4" r="2"/><path d="M4 22l4-7 3 2v5M8 15l2-6 4 2 3 3h3M10 9l-3 1-2 3"/></svg></div>
+            <h3><span data-l="en">5 km run or 2 km walk</span><span data-l="uk">5 км або 2 км</span></h3>
+            <p><span data-l="en">Everyone is welcome</span><span data-l="uk">Легка пробіжка або спокійна прогулянка. Раді всім!</span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- REGISTER -->
+    <section id="register" style="padding-top:0">
+      <div class="wrap">
+        <div class="register reveal">
+          <svg class="bg-star"><use href="#star8"/></svg>
+          <p class="eyebrow" style="color:rgba(255,255,255,.6)"><span data-l="en">How to register</span><span data-l="uk">Як зареєструватись</span></p>
+          <h2><span data-l="en">Registration<br>by donation</span><span data-l="uk">Реєстрація<br>за донат</span></h2>
+          <p class="lead">
+            <span data-l="en">All donations go to the Prytula Foundation, supporting the Ukrainian army.</span>
+            <span data-l="uk">Усі донати йдуть на Фонд Сергія Притули, на потреби армії.</span>
+          </p>
+          <ol class="steps">
+            <li><span data-l="en">Donate any amount to the Prytula Foundation</span><span data-l="uk">Задонатьте будь-яку суму на Фонд Сергія Притули</span></li>
+            <li><span data-l="en">Take a screenshot of your donation</span><span data-l="uk">Зробіть скрін донату</span></li>
+            <li><span data-l="en">Show it at the run and get your raffle tickets</span><span data-l="uk">Покажіть його на забігу й отримайте квитки на розіграш</span></li>
+          </ol>
+          <div class="tickets">
+            <div class="ticket"><b>$15</b> = <span data-l="en">1 ticket</span><span data-l="uk">1 квиток</span></div>
+            <div class="ticket"><b>$30</b> = <span data-l="en">2 tickets</span><span data-l="uk">2 квитки</span></div>
+            <div class="ticket"><b>$45</b> = <span data-l="en">3 tickets</span><span data-l="uk">3 квитки</span></div>
+            <div class="ticket ticket-more"><b>+$15</b> = <span data-l="en">+1 ticket, and so on</span><span data-l="uk">+1 квиток і так далі</span></div>
+          </div>
+          <a class="btn btn-primary donate-link" href="https://prytulafoundation.org/en/donation" target="_blank" rel="noopener">
+            <svg><use href="#heart"/></svg>
+            <span data-l="en">Donate to the Prytula Foundation</span><span data-l="uk">Задонатити на Фонд Притули</span>
+          </a>
+          <p class="fine"><span data-l="en">Every $15 donated = one more raffle ticket. No limit — the more you give, the better your chances.</span><span data-l="uk">Кожні $15 донату = ще один квиток на розіграш. Без обмежень. Більший донат — більше шансів.</span></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHAT AWAITS -->
+    <section style="padding-top:0">
+      <div class="wrap">
+        <p class="eyebrow"><span data-l="en">What awaits you</span><span data-l="uk">На вас чекають</span></p>
+        <h2 class="reveal one-line" style="--em:9.2;--em-uk:9.2"><span data-l="en">More than a run</span><span data-l="uk">Більше, ніж забіг</span></h2>
+        <div class="awaits">
+          <article class="await reveal">
+            <img src="img/river-ave-sm.webp" alt="" loading="lazy">
+            <div><h3><span data-l="en">Live carols</span><span data-l="uk">Колядки наживо</span></h3>
+              <p><span data-l="en">we sing along the way</span><span data-l="uk">співаємо всю дорогу</span></p></div>
+          </article>
+          <article class="await reveal">
+            <img src="img/two-smiles-sm.webp" alt="" loading="lazy">
+            <div><h3><span data-l="en">Photographer</span><span data-l="uk">Фотограф</span></h3>
+              <p><span data-l="en">to capture your smiles</span><span data-l="uk">зробить чудові світлини</span></p></div>
+          </article>
+          <article class="await reveal">
+            <img src="img/kutia-sm.webp" alt="" loading="lazy">
+            <div><h3><span data-l="en">After the finish — kutia</span><span data-l="uk">Після фінішу — кутя</span></h3>
+              <p><span data-l="en">plus warm conversations</span><span data-l="uk">плюс теплі розмови</span></p></div>
+          </article>
+          <article class="await reveal">
+            <img src="img/raffle-tickets-sm.webp" alt="" loading="lazy">
+            <div><h3><span data-l="en">Raffle prizes</span><span data-l="uk">Розіграш призів</span></h3>
+              <p><span data-l="en">from our sponsors</span><span data-l="uk">від наших спонсорів</span></p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- STARS CALLOUT -->
+    <section style="padding-top:0">
+      <div class="wrap stars">
+        <img class="reveal" src="img/bridge-walk-sm.webp" srcset="img/bridge-walk-sm.webp 720w, img/bridge-walk.webp 1600w" sizes="(min-width:800px) 50vw, 100vw" alt="Participants walking with handmade Christmas stars" loading="lazy">
+        <div class="reveal">
+          <span class="badge"><span data-l="en">Dress code</span><span data-l="uk">Дрес-код</span></span>
+          <h2><span data-l="en">Come with<br>your stars!</span><span data-l="uk">Приходьте<br>зі звіздами!</span></h2>
+          <p class="lead">
+            <span data-l="en">Bring your Christmas star and add other Ukrainian touches to your look. Come with the whole family and friends 💛</span>
+            <span data-l="uk">Беріть із собою звізди, одягайте вишиванки та додавайте до свого образу українські мотиви. Приводьте родину та друзів 💛</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section style="padding-top:0">
+      <div class="wrap">
+        <p class="eyebrow"><span data-l="en">Last year</span><span data-l="uk">Минулого року</span></p>
+        <h2 class="reveal one-line" style="--em:12.4;--em-uk:9.6"><span data-l="en">Moments from our run</span><span data-l="uk">Моменти з забігу</span></h2>
+        <figure class="group-photo reveal">
+          <img src="img/group-2025-sm.webp" srcset="img/group-2025-sm.webp 900w, img/group-2025.webp 1800w" sizes="(min-width:1120px) 1120px, 100vw" alt="Group photo of Star Run participants at The Forks" loading="lazy">
+        </figure>
+        <div class="gallery" id="gallery">
+          <button type="button" data-full="img/carolers-blue-star.webp"><img src="img/carolers-blue-star-sm.webp" alt="Caroler with a blue and yellow star" loading="lazy" width="720" height="1080"></button>
+          <button type="button" data-full="img/runner-orange.webp"><img src="img/runner-orange-sm.webp" alt="Runner carrying a star" loading="lazy" width="720" height="1080"></button>
+          <button type="button" data-full="img/red-hat-star.webp"><img src="img/red-hat-star-sm.webp" alt="Participant with an orange star" loading="lazy" width="720" height="1080"></button>
+          <button type="button" data-full="img/runners-star.webp"><img src="img/runners-star-sm.webp" alt="Runners carrying a Christmas star" loading="lazy" width="720" height="1080"></button>
+          <button type="button" data-full="img/two-smiles.webp"><img src="img/two-smiles-sm.webp" alt="Two smiling participants with stars" loading="lazy" width="720" height="1080"></button>
+          <button type="button" data-full="img/star-flag.webp"><img src="img/star-flag-sm.webp" alt="Star and Ukrainian flag" loading="lazy" width="720" height="1080"></button>
+          <button type="button" data-full="img/slava-star.webp"><img src="img/slava-star-sm.webp" alt="Star with “Слава Україні” written on it" loading="lazy" width="720" height="1080"></button>
+          <button type="button" data-full="img/group-goat.webp"><img src="img/group-goat-sm.webp" alt="Group of participants with a goat mask" loading="lazy" width="720" height="1080"></button>
+          <button type="button" data-full="img/river-ave.webp"><img src="img/river-ave-sm.webp" alt="Carolers walking with stars" loading="lazy" width="720" height="1080"></button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- FINAL CTA -->
+  <section class="final">
+    <div class="wrap">
+      <h2><span data-l="en">See you<br>on Dec 26!</span><span data-l="uk">До зустрічі<br>26 грудня!</span></h2>
+      <p><span data-l="en">Bring your family and friends 💛</span><span data-l="uk">Приводьте родину та друзів 💛</span></p>
+      <a class="btn btn-primary donate-link" href="https://prytulafoundation.org/en/donation" target="_blank" rel="noopener">
+        <svg><use href="#heart"/></svg>
+        <span data-l="en">Donate to register</span><span data-l="uk">Задонатити та зареєструватись</span>
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span data-l="en">Christmas Star Run · Winnipeg · Donations go directly to the</span>
+    <span data-l="uk">Забіг Звіздарів · Вінніпег · Донати йдуть напряму на</span>
+    <a href="https://prytulafoundation.org/en/donation" target="_blank" rel="noopener"><span data-l="en">Prytula Foundation</span><span data-l="uk">Фонд Сергія Притули</span></a>
+    <p class="credit">
+      <span data-l="en">Website by</span><span data-l="uk">Сайт розробила</span>
+      <a href="mailto:foundation.software.development@gmail.com?subject=Website%20inquiry">Foundation Software Development</a>
+    </p>
+  </div>
+</footer>
+
+<div class="sticky" id="sticky">
+  <a class="btn btn-primary donate-link" href="https://prytulafoundation.org/en/donation" target="_blank" rel="noopener">
+    <svg><use href="#heart"/></svg>
+    <span data-l="en">Donate to register</span><span data-l="uk">Задонатити та зареєструватись</span>
+  </a>
+</div>
+
+<dialog id="lightbox" aria-label="Photo">
+  <button class="close" type="button" aria-label="Close">×</button>
+  <img alt="">
+</dialog>
+
+<script>
+(function(){
+  var html=document.documentElement;
+  var TITLES={en:"Christmas Star Run 2026", uk:"Забіг Звіздарів 2026"};
+
+  function setLang(l){
+    html.dataset.lang=l; html.lang=l;
+    document.title=TITLES[l];
+    document.querySelectorAll('.lang button').forEach(function(b){b.setAttribute('aria-pressed', b.dataset.set===l)});
+    try{localStorage.setItem('lang',l)}catch(e){}
+    renderCountdown();
+  }
+
+  // initial language: ?lang= → saved choice → browser language
+  var q=new URLSearchParams(location.search).get('lang'), saved=null;
+  try{saved=localStorage.getItem('lang')}catch(e){}
+  if(saved!=='en'&&saved!=='uk') saved=null;
+  var nav=(navigator.language||'en').toLowerCase();
+  var initial=(q==='uk'||q==='ua'||q==='ukrainian')?'uk':(q==='en')?'en':saved||((nav.indexOf('uk')===0||nav.indexOf('ru')===0)?'uk':'en');
+
+  document.querySelectorAll('.lang button').forEach(function(b){
+    b.addEventListener('click',function(){setLang(b.dataset.set)});
+  });
+
+  // countdown — Dec 26, 2026, 9:00 AM Winnipeg (UTC-6)
+  var START=Date.parse('2026-12-26T15:00:00Z');
+  function renderCountdown(){
+    var el=document.getElementById('countdown'); if(!el) return;
+    var ms=START-Date.now(), l=html.dataset.lang;
+    if(ms<=0 && ms>-4*3600e3){el.innerHTML=l==='uk'?'<b>Забіг уже сьогодні!</b>':'<b>The run is today!</b>'; el.hidden=false; return;}
+    if(ms<=0){el.hidden=true; return;}
+    var d=Math.ceil(ms/864e5);
+    if(l==='uk'){
+      var w=(d%10===1&&d%100!==11)?'день':(d%10>=2&&d%10<=4&&(d%100<10||d%100>=20))?'дні':'днів';
+      el.innerHTML='До старту: <b>'+d+' '+w+'</b>';
+    } else el.innerHTML='<b>'+d+' day'+(d===1?'':'s')+'</b> to go';
+    el.hidden=false;
+  }
+
+  setLang(initial);
+
+  // header background + sticky donate button
+  var header=document.querySelector('header'), sticky=document.getElementById('sticky'), final=document.querySelector('.final');
+  function onScroll(){
+    var y=window.scrollY;
+    header.classList.toggle('solid', y>40);
+    var finalTop=final.getBoundingClientRect().top;
+    sticky.classList.toggle('show', y>window.innerHeight*0.8 && finalTop>window.innerHeight);
+  }
+  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+
+  // reveal on scroll
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px'});
+    document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
+  } else document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('in')});
+
+  // lightbox
+  var dlg=document.getElementById('lightbox'), dimg=dlg.querySelector('img');
+  document.getElementById('gallery').addEventListener('click',function(e){
+    var b=e.target.closest('button[data-full]'); if(!b) return;
+    dimg.src=b.dataset.full; dimg.alt=b.querySelector('img').alt;
+    if(dlg.showModal) dlg.showModal(); else window.open(b.dataset.full,'_blank');
+  });
+  dlg.addEventListener('click',function(e){ if(e.target===dlg||e.target.classList.contains('close')) dlg.close(); });
+})();
+</script>
+</body>
+</html>
